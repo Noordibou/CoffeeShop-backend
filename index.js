@@ -9,6 +9,7 @@ const postRoute = require('./routes/coffeeShops')
 const commentRoute = require('./routes/comments')
 const app = express()
 
+
 app.use(logger('dev'))
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
@@ -18,10 +19,33 @@ require('./config/database')
 
 
 app.use(cors({
-  origin: 'https://coffee-shop-blog.vercel.app',
-  methods: 'GET, POST, PUT, DELETE',
+  origin: ['https://coffee-shop-blog.vercel.app',
+    'http://localhost:3000'],
   credentials: true,
+  methods: 'GET, POST, PUT, DELETE',
+  allowedHeaders: [
+    'Access-Control-Allow-Origin',
+    'Content-Type',
+    'Authorization',
+  ],
 }));
+
+
+// var allowlist = ['https://coffee-shop-blog.vercel.app',
+//   'http://localhost:3000']
+
+// var corsOptionsDelegate = function (req, callback) {
+//   var corsOptions
+//   if (allowlist.indexOf(req.header('Origin')) !== -1) {
+//     corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+//   } else {
+//     corsOptions = { origin: false } // disable CORS for this request
+//   }
+//   callback(null, corsOptions) // callback expects two parameters: error and options
+// }
+
+// app.use(cors(corsOptionsDelegate));
+
 
 
 

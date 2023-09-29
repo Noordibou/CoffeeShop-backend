@@ -57,13 +57,25 @@ app.use("/comments", commentRoute)
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+// app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
-});
+// app.get('/*', function (req, res) {
+//   res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'));
+// });
+app.use((err, req, res, next) => {
+  const status = err.status || 500
+  const message = err.message || 'Something went wrong'
+  return res.status(status).json({
+    success: false,
+    status: status,
+    message,
+  })
+})
 
-
+app.get('/', (req, res) => {
+    res.send('Hello, Express!')
+  })
+  
 // Configure to use port 3001 instead of 3000 during
 // development to avoid collision with React's dev server
 const port = process.env.PORT || 3001;

@@ -1,0 +1,29 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        bodyColor: '#120F0D',
+        mainColor: '#9E0902',
+        lightColor: '#EE8B7A',
+        darkColor: '#573B2E',
+        hoverColor: 'rgba(100, 255, 218, 0.1)',
+        bgColor: '#f5f0ed',
+      },
+      fontFamily: {
+        titleFont: ['Playfair Display', 'serif'],
+        bodyFont: ['Inter', 'sans- serif'],
+        orb: ['Orbitron', 'sans- serif'],
+
+      },
+    },
+  },
+  plugins: [],
+}

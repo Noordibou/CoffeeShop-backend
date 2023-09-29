@@ -18,7 +18,7 @@ require('./config/database')
 
 
 app.use(cors({
-  origin: ['https://coffee-shop-blog.vercel.app',
+  origin: ['https://coffee-shop-blog2.vercel.app',
     'http://localhost:3000'],
   credentials: true,
   methods: 'GET, POST, PUT, DELETE',

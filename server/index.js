@@ -30,6 +30,8 @@ app.use(cors({
 }));
 
 
+
+
 // var allowlist = ['https://coffee-shop-blog.vercel.app',
 //   'http://localhost:3000']
 

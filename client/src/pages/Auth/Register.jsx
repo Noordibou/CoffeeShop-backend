@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; 
+import { ToastContainer, toast } from "react-toastify";
 import URL from '../../URL';
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Register() {
   const navigate = useNavigate(); 
@@ -20,16 +22,40 @@ export default function Register() {
     });
   };
 
+  const handleError = (err) =>
+    toast.error(err, {
+      position: "bottom-left",
+    });
+  const handleSuccess = (msg) =>
+    toast.success(msg, {
+      position: "bottom-right",
+    });
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(URL+`/auth/register`, formData);
-      console.log('Registration successful:', response.data);
-      navigate('/login'); 
+      const response = await axios.post(URL+`/auth/register`, formData, { withCredentials: true }
+      );
+      const { success, message } = response.data;
+      if (success) {
+        handleSuccess(message);
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      } else {
+        handleError(message);
+      }
     } catch (error) {
-      console.error('Registration failed:', error.response.data);
-    }
+      console.log(error);
+    };
   };
+  //     console.log('Registration successful:', response.data);
+  //     navigate('/login'); 
+  //   } catch (error) {
+  //     console.error('Registration failed:', error.response.data);
+  //   }
+  // };
   return (
     <main className="bg-gray-100 flex justify-center pt-44 h-screen">
       <div className="w-96">
@@ -89,6 +115,7 @@ export default function Register() {
             </button>
           </div>
         </form>
+        <ToastContainer/>
         <p className="text-center text-gray-600">
           Already have an account? <a href="/login" className="text-blue-500">Log in</a>
         </p>

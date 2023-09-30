@@ -1,14 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Add from '../../components/Add/Add';
-import CoffeeShopsPage from '../CoffeeShopsPage/CoffeeShopsPage';
-import CoffeeShopDetailPage from '../CoffeeShopDetailPage/CoffeeShopDetailPage';
-import NavBar from '../../components/NavBar/NavBar';
-import Home from '../Home/Home';
-import Footer from '../Footer/Footer';
-import Login from '../Auth/LoginPage';
-import Register from '../Auth/Register';
-import { UserContextProvider } from '../../context/UserContext';
+import Add from '../components/Add/Add';
+import CoffeeShopsPage from '../pages/CoffeeShopsPage/CoffeeShopsPage';
+import CoffeeShopDetailPage from '../pages/CoffeeShopDetailPage/CoffeeShopDetailPage';
+import NavBar from '../components/NavBar/NavBar';
+import Home from '../pages/Home/Home';
+import Footer from '../pages/Footer/Footer';
+import Login from '../pages/Auth/LoginPage';
+import Register from '../pages/Auth/Register';
+import { UserContextProvider } from '../context/UserContext';
 import { BrowserRouter } from 'react-router-dom';
 
 
